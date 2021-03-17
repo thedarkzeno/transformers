@@ -1036,6 +1036,10 @@ class Trainer:
                 # We just need to begin an iteration to create the randomization of the sampler.
                 for _ in train_dataloader:
                     break
+        
+        for param in model.roberta.encoder.parameters():
+            param.requires_grad = False
+
 
         for epoch in range(epochs_trained, num_train_epochs):
             if isinstance(train_dataloader, DataLoader) and isinstance(train_dataloader.sampler, DistributedSampler):
