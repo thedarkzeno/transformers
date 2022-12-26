@@ -168,10 +168,10 @@ class RobertaSelfAttention(nn.Module):
         self.seq_len = 64#config.segment_means_seq_len
         self.conv_kernel_size = 65#config.conv_kernel_size
 
-        if config.inv_coeff_init_option:
-            self.init_option = config["inv_init_coeff_option"]
-        else:
-            self.init_option = "original"
+#         if config.inv_coeff_init_option:
+#             self.init_option = config["inv_init_coeff_option"]
+#         else:
+        self.init_option = "original"
 
         self.query = nn.Linear(config.hidden_size, self.all_head_size)
         self.key = nn.Linear(config.hidden_size, self.all_head_size)
